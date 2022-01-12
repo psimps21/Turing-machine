@@ -1,0 +1,90 @@
+# Command to generate picture
+# ./turmite -prog t1.mite -s 101 -steps 1234
+
+# Start of file
+a 0 -> c 6 left
+
+# make left upper diag
+c 0 -> b 0 right
+b 0 -> c 1 left
+
+# tranistion to right upper diag
+b 6 -> e 6 forward
+
+# Make right upper diag
+d 0 -> e 1 left
+e 0 -> d 0 right
+
+# bottom corner edge case for right upper diag
+e 1 -> d 1 right
+
+# End of right upper diag (one x made)
+# move to forward (facing east) to start new x
+d 6 -> f 6 forward 
+
+# Start second left upper diag
+f 0 -> h 6 back
+
+# Make second left upper diag
+h 6 -> g 6 right
+h 1 -> g 1 right
+g 0 -> h 1 left
+
+# bottom corner edge case for second left upper diag
+g 1 -> h 1 left
+
+# tranistion to second right upper diag
+g 6 -> j 6 forward
+
+# Make second right upper diag
+j 6 -> i 6 right
+j 1 -> i 1 right
+i 0 -> j 1 left
+
+# bottom corner edge case for second right upper diag
+i 1 -> j 1 left
+
+# Travel left along middle X to make third X
+i 6 -> k 6 back
+k 6 -> k 6 forward
+k 0 -> l 6 right
+l 1 -> m 1 right
+m 1 -> e 1 left
+
+# bottom corner edge case for third right upper diag
+d 1 -> n 1 forward
+n 1 -> p 1 left
+
+# Make third bottom upper right diag
+p 0 -> q 1 right
+q 1 -> p 1 left
+
+# tranistion to third left upper diag
+p 6 -> r 6 left
+r 0 -> s 0 right
+s 0 -> r 1 left
+
+# top corner edge case for third left upper diag
+r 1 -> t 1 right
+t 1 -> t 1 forward
+t 0 -> u 0 left
+u 1 -> u 1 forward
+u 0 -> q 1 right
+
+# Transition to making the green part
+p 1 -> q 1 right
+q 6 -> v 6 left
+v 6 -> v 6 forward
+v 0 -> w 0 left
+w 1 -> w 1 forward
+
+# Go from right to left filling green 
+w 0 -> x 7 left
+x 0 -> x 7 forward
+
+# Transition to goinf left when hit yellow
+x 1 -> y 1 right
+y 0 -> z 7 right
+
+# Go from right to left filling green until hit yellow
+z 0 -> z 7 forward

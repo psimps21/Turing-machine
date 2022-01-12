@@ -1,0 +1,14 @@
+a 0 -> a 1 right
+a 1 -> a 2 right
+a 2 -> a 3 left
+a 3 -> a 0 left
+
+
+
+a 0 -> b 3 l
+b 0 -> c 3 l
+c 0 -> b 3 f
+
+a 3 -> b 3 r
+b 3 -> c 0 back
+c 3 -> b 3 r
